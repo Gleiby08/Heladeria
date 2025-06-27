@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelato Paradiso - Heladería Artesanal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #ff6b8b;
+            --secondary: #ffd166;
+            --accent: #06d6a0;
+            --dark: #073b4c;
+            --light: #f8f9fa;
+            --cream: #fff5e6;
+            --chocolate: #6d4c41;
+            --berry: #d81b60;
+            --mint: #66bb6a;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            font-size: 36px;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            color: var(--primary);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-dark {
+            background: var(--dark);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .promo-badge {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Flavors Section */
+        .flavors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .flavor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .flavor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .flavor-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .flavor-content {
+            padding: 20px;
+        }
+        
+        .flavor-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .flavor-content p {
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .flavor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background: var(--light);
+            color: #555;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .tag.vegan { background: #e8f5e9; color: #2e7d32; }
+        .tag.fruit { background: #f3e5f5; color: #6a1b9a; }
+        .tag.chocolate { background: #efebe9; color: #4e342e; }
+        .tag.nut { background: #fff3e0; color: #e65100; }
+        .tag.new { background: #e3f2fd; color: #1565c0; }
+        
+        .flavor-price {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        /* Customize Section */
+        .customize-section {
+            background-image: linear-gradient(to right, var(--primary), #ff8da1);
+            color: white;
+        }
+        
+        .customize-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: var(--primary);
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Story Section */
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            overflow: hidden;
+        }
+        
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #777;
+            overflow: hidden;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-rating {
+            color: var(--secondary);
+            margin-top: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+            animation: modalFade 0.3s;
+            position: relative;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255,107,139,0.2);
+        }
+        
+        .form-footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-switch {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 1200px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .admin-header h2 {
+            color: var(--dark);
+            font-size: 2.5rem;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .admin-section {
+            margin-top: 40px;
+        }
+        
+        .admin-section h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .flavor-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-full {
+            grid-column: span 2;
+        }
+        
+        .flavors-list {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .flavor-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .flavor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .flavor-actions button {
+            padding: 6px 12px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .flavor-actions .edit-btn {
+            background: #4fc3f7;
+            color: white;
+        }
+        
+        .flavor-actions .delete-btn {
+            background: #ef5350;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 15px;
+            }
+            
+            .nav-links {
+                order: 3;
+                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .auth-buttons {
+                margin-left: auto;
+            }
+            
+            .hero h2 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .flavor-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-full {
+                grid-column: span 1;
+            }
+        }
+        
+        /* Animation for elements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-ice-cream logo-icon"></i>
+                    <h1>Gelato Paradiso</h1>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#sabores">Sabores</a></li>
+                    <li><a href="#personaliza">Personaliza</a></li>
+                    <li><a href="#historia">Nuestra Historia</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <button id="login-btn" class="btn btn-outline">Iniciar Sesión</button>
+                    <button id="register-btn" class="btn btn-primary">Registrarse</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="promo-badge">¡15% OFF en tu primer pedido!</div>
+            <h2>El Arte del Helado Artesanal</h2>
+            <p>Descubre nuestros helados gourmet elaborados con ingredientes naturales de primera calidad</p>
+            <a href="#sabores" class="btn btn-primary" style="font-size: 1.1rem; padding: 12px 30px;">Ver Sabores</a>
+        </div>
+    </section>
+
+    <!-- Sabores Section -->
+    <section id="sabores">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Exquisitos Sabores</h2>
+                <p>Explora nuestra amplia selección de helados artesanales, desde clásicos atemporales hasta creaciones innovadoras</p>
+            </div>
+            
+            <div class="flavors-container" id="flavors-list">
+                <!-- Flavors will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Personaliza Section -->
+    <section id="personaliza" class="customize-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Crea Tu Helado Perfecto</h2>
+                <p>Personaliza cada detalle de tu experiencia heladera con nuestra herramienta exclusiva</p>
+            </div>
+            
+            <div class="customize-steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Elige tu Base</h3>
+                    <p>Cono clásico, vaso, cucurucho de chocolate o tarrina</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Selecciona Sabores</h3>
+                    <p>Combina hasta 3 sabores diferentes en tu helado</p>
+                </div>
+                
+                <div class="step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Añade Toppings</h3>
+                    <p>Fruta fresca, chocolates, galletas, salsas y mucho más</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="btn" style="background: white; color: var(--primary); padding: 12px 30px; font-size: 1.1rem;">Personalizar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section id="historia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Pasión por el Helado</h2>
+                <p>Conoce la historia detrás de cada cucharada de felicidad</p>
+            </div>
+            
+            <div class="story-content">
+                <div class="story-text fade-in">
+                    <p>En el corazón de la ciudad, nació Gelato Paradiso con un sueño: rescatar la tradición del helado artesanal utilizando solo los mejores ingredientes naturales.</p>
+                    <p style="margin: 20px 0;">Nuestro fundador, Marco Bianchi, aprendió el arte del gelato en las heladerías familiares de Florencia. Tras años de perfeccionamiento, trajo a nuestra ciudad técnicas tradicionales italianas combinadas con ingredientes locales de temporada.</p>
+                    <p>Cada mañana, comenzamos con leche fresca de granjas locales, frutas de temporada recogidas en su punto óptimo de maduración, y los mejores chocolates y nueces seleccionados personalmente. Nada de colorantes artificiales, saborizantes o conservantes. Solo autenticidad en cada cucharada.</p>
+                </div>
+                
+                <div class="story-image fade-in">
+                    <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Heladero artesanal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>La sonrisa de nuestros clientes es nuestra mejor recompensa</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Ana Martínez">
+                        </div>
+                        <div>
+                            <h3>Ana Martínez</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"El mejor helado vegano que he probado. La textura es increíble y los sabores son auténticos. ¡Mi favorito es el de frambuesa con chocolate!"</p>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Carlos Rodríguez">
+                        </div>
+                        <div>
+                            <h3>Carlos Rodríguez</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Llevé a mi familia para celebrar un cumpleaños y quedamos encantados. El personal fue muy atento y los helados espectaculares. ¡Volveremos pronto!"</p>
+                </div>
+                
+                <div class="testimonial fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Laura Gómez">
+                        </div>
+                        <div>
+                            <h3>Laura Gómez</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Como celíaca, es difícil encontrar helados seguros. En Gelato Paradiso tienen opciones sin gluten deliciosas y me siento completamente segura. ¡Gracias!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel (hidden by default) -->
+    <div id="admin-panel" class="admin-panel">
+        <div class="admin-header">
+            <h2>Panel de Administración</h2>
+            <button id="logout-admin-btn" class="btn btn-outline">Cerrar Sesión</button>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Ventas Hoy</h3>
+                <div class="number">€1,245</div>
+                <p>+12% respecto a ayer</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pedidos</h3>
+                <div class="number">42</div>
+                <p>+5 nuevos hoy</p>
+            </div>
+            <div class="stat-card">
+                <h3>Clientes Nuevos</h3>
+                <div class="number">18</div>
+                <p>+8% esta semana</p>
+            </div>
+            <div class="stat-card">
+                <h3>Valoración</h3>
+                <div class="number">4.8/5</div>
+                <p>+32 reseñas este mes</p>
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <h3>Gestión de Sabores</h3>
+            <div class="flavor-form">
+                <div class="form-group form-full">
+                    <label for="flavor-name">Nombre del Sabor</label>
+                    <input type="text" id="flavor-name" placeholder="Ej: Vainilla Bourbon">
+                </div>
+                <div class="form-group">
+                    <label for="flavor-type">Tipo</label>
+                    <input type="text" id="flavor-type" placeholder="Ej: Crema">
+                </div>
+                <div class="form-group">
+                    <label for="flavor-price">Precio (€)</label>
+                    <input type="number" id="flavor-price" placeholder="Ej: 3.50" step="0.01">
+                </div>
+                <div class="form-group form-full">
+                    <label for="flavor-desc">Descripción</label>
+                    <input type="text" id="flavor-desc" placeholder="Ej: Vainilla de Madagascar con notas de caramelo">
+                </div>
+                <div class="form-group form-full">
+                    <label for="flavor-tags">Etiquetas (separadas por comas)</label>
+                    <input type="text" id="flavor-tags" placeholder="Ej: vegano, sin lactosa, fruta">
+                </div>
+                <div class="form-group form-full">
+                    <button id="save-flavor" class="btn btn-primary" style="width: 100%; padding: 12px;">Guardar Sabor</button>
+                </div>
+            </div>
+            
+            <div class="flavors-list" id="admin-flavors-list">
+                <!-- Admin flavors list will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gelato Paradiso</h3>
+                    <p>Helados artesanales elaborados con ingredientes naturales y mucho amor.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Horarios</h3>
+                    <ul>
+                        <li><i class="far fa-clock"></i> Lunes a Viernes: 12:00 - 22:00</li>
+                        <li><i class="far fa-clock"></i> Sábados: 11:00 - 23:00</li>
+                        <li><i class="far fa-clock"></i> Domingos: 11:00 - 21:00</li>
+                        <li><i class="far fa-clock"></i> Festivos: 12:00 - 20:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. de los Helados, 123</li>
+                        <li><i class="fas fa-phone"></i> +34 912 345 678</li>
+                        <li><i class="fas fa-envelope"></i> hola@gelatoparadiso.com</li>
+                        <li><i class="fab fa-whatsapp"></i> Pedidos por WhatsApp</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Suscríbete</h3>
+                    <p>Recibe descuentos exclusivos y novedades:</p>
+                    <form style="margin-top: 15px;">
+                        <input type="email" placeholder="Tu correo electrónico" style="padding: 10px; width: 100%; border-radius: 5px; border: none; margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Suscribirme</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Gelato Paradiso. Todos los derechos reservados. | Heladería Artesanal</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Iniciar Sesión</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                </div>
+                <button id="login-submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Acceder</button>
+                <div class="form-footer">
+                    <p>¿Olvidaste tu contraseña? <a href="#" id="forgot-password">Recuperar</a></p>
+                    <div class="form-switch">
+                        ¿No tienes cuenta? <a href="#" id="switch-to-register">Regístrate aquí</a>
+                    </div>
+                    <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <button id="admin-login-btn" class="btn btn-dark" style="width: 100%;">Acceso Administrador</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crear Cuenta</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="register-name">Nombre Completo</label>
+                    <input type="text" id="register-name" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar Contraseña</label>
+                    <input type="password" id="register-confirm" placeholder="••••••••">
+                </div>
+                <button id="register-submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Registrarse</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        ¿Ya tienes cuenta? <a href="#" id="switch-to-login">Inicia Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--dark);">
+                <h3>Acceso Administrador</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="admin-email">Email de Administrador</label>
+                    <input type="email" id="admin-email" placeholder="admin@heladeria.com">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Contraseña</label>
+                    <input type="password" id="admin-password" placeholder="••••••••">
+                </div>
+                <button id="admin-submit" class="btn btn-dark" style="width: 100%; padding: 12px;">Acceder al Panel</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        <a href="#" id="back-to-user-login">Volver a inicio de usuario</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ====================
+        // DATOS INICIALES
+        // ====================
+        
+        // Sabores iniciales
+        const initialFlavors = [
+            {
+                id: 1,
+                name: "Vainilla Bourbon",
+                description: "Vainilla de Madagascar con notas de caramelo y un aroma embriagador",
+                price: 3.50,
+                tags: ["Clásico", "Premium"],
+                type: "crema",
+                color: "#e0f7fa"
+            },
+            {
+                id: 2,
+                name: "Chocolate Negro 70%",
+                description: "Intenso chocolate amargo con cacao de Ecuador y trozos de cacao",
+                price: 4.00,
+                tags: ["Chocolate", "Sin azúcar añadido"],
+                type: "chocolate",
+                color: "#d7ccc8"
+            },
+            {
+                id: 3,
+                name: "Frambuesa Silvestre",
+                description: "Frambuesas orgánicas con un toque de limón y semillas reales",
+                price: 3.75,
+                tags: ["Frutos Rojos", "Vegano"],
+                type: "fruta",
+                color: "#f8bbd0"
+            },
+            {
+                id: 4,
+                name: "Limón de Sorrento",
+                description: "Limones italianos con ralladura natural y un toque de albahaca",
+                price: 3.25,
+                tags: ["Cítrico", "Vegano"],
+                type: "fruta",
+                color: "#fff9c4"
+            },
+            {
+                id: 5,
+                name: "Lavanda y Miel",
+                description: "Delicada flor de lavanda con miel de flores silvestres locales",
+                price: 4.25,
+                tags: ["Exótico", "Edición Limitada"],
+                type: "crema",
+                color: "#d1c4e9"
+            },
+            {
+                id: 6,
+                name: "Matcha Premium",
+                description: "Té matcha japonés grado ceremonial con leche de almendras",
+                price: 4.50,
+                tags: ["Vegano", "Sin lactosa"],
+                type: "crema",
+                color: "#c8e6c9"
+            }
+        ];
+        
+        // Usuarios de prueba
+        const initialUsers = [
+            { id: 1, name: "Ana Martínez", email: "ana@ejemplo.com", password: "ana123", role: "user" },
+            { id: 2, name: "Carlos Rodríguez", email: "carlos@ejemplo.com", password: "carlos123", role: "user" }
+        ];
+        
+        // Administradores
+        const adminUsers = [
+            { id: 100, name: "Administrador", email: "admin@heladeria.com", password: "admin123", role: "admin" }
+        ];
+        
+        // ====================
+        // ESTADO DE LA APLICACIÓN
+        // ====================
+        let currentUser = null;
+        let flavors = JSON.parse(localStorage.getItem('flavors')) || initialFlavors;
+        let users = JSON.parse(localStorage.getItem('users')) || [...initialUsers, ...adminUsers];
+        let currentEditFlavorId = null;
+        
+        // ====================
+        // DOM ELEMENTS
+        // ====================
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const adminLoginModal = document.getElementById('admin-login-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        const switchToRegister = document.getElementById('switch-to-register');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const backToUserLogin = document.getElementById('back-to-user-login');
+        const adminPanel = document.getElementById('admin-panel');
+        const logoutAdminBtn = document.getElementById('logout-admin-btn');
+        const flavorsList = document.getElementById('flavors-list');
+        const adminFlavorsList = document.getElementById('admin-flavors-list');
+        const saveFlavorBtn = document.getElementById('save-flavor');
+        
+        // ====================
+        // FUNCIONES DE RENDERIZADO
+        // ====================
+        
+        // Renderizar sabores en la página principal
+        function renderFlavors() {
+            flavorsList.innerHTML = '';
+            
+            flavors.forEach(flavor => {
+                const flavorCard = document.createElement('div');
+                flavorCard.className = 'flavor-card fade-in';
+                flavorCard.innerHTML = `
+                    <div class="flavor-img" style="background: linear-gradient(45deg, ${flavor.color}, ${adjustColor(flavor.color, 20)});">
+                        <i class="fas fa-ice-cream" style="color: ${getIconColor(flavor.type)};"></i>
+                    </div>
+                    <div class="flavor-content">
+                        <h3>${flavor.name}</h3>
+                        <p>${flavor.description}</p>
+                        <div class="flavor-tags">
+                            ${flavor.tags.map(tag => `<span class="tag ${getTagClass(tag)}">${tag}</span>`).join('')}
+                        </div>
+                        <div class="flavor-price">${flavor.price.toFixed(2)} €</div>
+                    </div>
+                `;
+                flavorsList.appendChild(flavorCard);
+            });
+            
+            // Activar animaciones
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => {
+                    el.classList.add('appear');
+                });
+            }, 100);
+        }
+        
+        // Renderizar sabores en el panel de administración
+        function renderAdminFlavors() {
+            adminFlavorsList.innerHTML = '';
+            
+            if (flavors.length === 0) {
+                adminFlavorsList.innerHTML = '<p style="text-align: center; padding: 20px;">No hay sabores registrados</p>';
+                return;
+            }
+            
+            flavors.forEach(flavor => {
+                const flavorItem = document.createElement('div');
+                flavorItem.className = 'flavor-item';
+                flavorItem.innerHTML = `
+                    <div>
+                        <h4>${flavor.name}</h4>
+                        <div class="flavor-tags">
+                            ${flavor.tags.map(tag => `<span class="tag ${getTagClass(tag)}">${tag}</span>`).join('')}
+                        </div>
+                        <div class="flavor-price">${flavor.price.toFixed(2)} €</div>
+                    </div>
+                    <div class="flavor-actions">
+                        <button class="edit-btn" data-id="${flavor.id}"><i class="fas fa-edit"></i></button>
+                        <button class="delete-btn" data-id="${flavor.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                adminFlavorsList.appendChild(flavorItem);
+            });
+            
+            // Añadir event listeners para editar y eliminar
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    editFlavor(id);
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.getAttribute('data-id'));
+                    deleteFlavor(id);
+                });
+            });
+        }
+        
+        // Actualizar UI basado en estado de autenticación
+        function updateAuthUI() {
+            if (currentUser) {
+                loginBtn.textContent = currentUser.name.split(' ')[0];
+                registerBtn.textContent = 'Cerrar Sesión';
+                registerBtn.classList.remove('btn-primary');
+                registerBtn.classList.add('btn-outline');
+                
+                if (currentUser.role === 'admin') {
+                    adminPanel.style.display = 'block';
+                } else {
+                    adminPanel.style.display = 'none';
+                }
+            } else {
+                loginBtn.textContent = 'Iniciar Sesión';
+                registerBtn.textContent = 'Registrarse';
+                registerBtn.classList.remove('btn-outline');
+                registerBtn.classList.add('btn-primary');
+                adminPanel.style.display = 'none';
+            }
+        }
+        
+        // ====================
+        // FUNCIONES DE HELADOS
+        // ====================
+        
+        // Guardar un nuevo sabor o actualizar existente
+        function saveFlavor() {
+            const name = document.getElementById('flavor-name').value;
+            const type = document.getElementById('flavor-type').value;
+            const price = parseFloat(document.getElementById('flavor-price').value);
+            const desc = document.getElementById('flavor-desc').value;
+            const tags = document.getElementById('flavor-tags').value.split(',').map(tag => tag.trim());
+            
+            if (!name || !type || isNaN(price) || !desc) {
+                alert('Por favor completa todos los campos requeridos');
+                return;
+            }
+            
+            if (currentEditFlavorId) {
+                // Actualizar sabor existente
+                const index = flavors.findIndex(f => f.id === currentEditFlavorId);
+                if (index !== -1) {
+                    flavors[index] = {
+                        ...flavors[index],
+                        name,
+                        type,
+                        price,
+                        description: desc,
+                        tags
+                    };
+                }
+                currentEditFlavorId = null;
+            } else {
+                // Crear nuevo sabor
+                const newFlavor = {
+                    id: Date.now(),
+                    name,
+                    type,
+                    price,
+                    description: desc,
+                    tags,
+                    color: getRandomColor()
+                };
+                flavors.push(newFlavor);
+            }
+            
+            // Guardar en localStorage
+            localStorage.setItem('flavors', JSON.stringify(flavors));
+            
+            // Actualizar UI
+            renderFlavors();
+            renderAdminFlavors();
+            
+            // Limpiar formulario
+            document.getElementById('flavor-name').value = '';
+            document.getElementById('flavor-type').value = '';
+            document.getElementById('flavor-price').value = '';
+            document.getElementById('flavor-desc').value = '';
+            document.getElementById('flavor-tags').value = '';
+            
+            alert('Sabor guardado exitosamente');
+        }
+        
+        // Editar un sabor existente
+        function editFlavor(id) {
+            const flavor = flavors.find(f => f.id === id);
+            if (flavor) {
+                document.getElementById('flavor-name').value = flavor.name;
+                document.getElementById('flavor-type').value = flavor.type;
+                document.getElementById('flavor-price').value = flavor.price;
+                document.getElementById('flavor-desc').value = flavor.description;
+                document.getElementById('flavor-tags').value = flavor.tags.join(', ');
+                
+                currentEditFlavorId = id;
+                
+                // Scroll al formulario
+                document.getElementById('flavor-name').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Eliminar un sabor
+        function deleteFlavor(id) {
+            if (confirm('¿Estás seguro de que deseas eliminar este sabor?')) {
+                flavors = flavors.filter(f => f.id !== id);
+                localStorage.setItem('flavors', JSON.stringify(flavors));
+                renderFlavors();
+                renderAdminFlavors();
+                alert('Sabor eliminado exitosamente');
+            }
+        }
+        
+        // ====================
+        // FUNCIONES DE AUTENTICACIÓN
+        // ====================
+        
+        // Iniciar sesión
+        function loginUser(email, password) {
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                updateAuthUI();
+                return true;
+            }
+            
+            return false;
+        }
+        
+        // Registrar nuevo usuario
+        function registerUser(name, email, password) {
+            // Verificar si el usuario ya existe
+            const userExists = users.some(u => u.email === email);
+            if (userExists) {
+                alert('Este correo electrónico ya está registrado');
+                return false;
+            }
+            
+            // Crear nuevo usuario
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                role: 'user'
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            alert('¡Registro exitoso! Ahora puedes iniciar sesión');
+            return true;
+        }
+        
+        // Cerrar sesión
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateAuthUI();
+        }
+        
+        // ====================
+        // FUNCIONES UTILITARIAS
+        // ====================
+        
+        // Obtener clase CSS para etiqueta
+        function getTagClass(tag) {
+            const lowerTag = tag.toLowerCase();
+            if (lowerTag.includes('vegano')) return 'vegan';
+            if (lowerTag.includes('fruta') || lowerTag.includes('cítrico') || lowerTag.includes('rojos')) return 'fruit';
+            if (lowerTag.includes('chocolate')) return 'chocolate';
+            if (lowerTag.includes('nueces') || lowerTag.includes('almendra')) return 'nut';
+            if (lowerTag.includes('nuevo') || lowerTag.includes('limitada')) return 'new';
+            return '';
+        }
+        
+        // Obtener color de ícono basado en tipo
+        function getIconColor(type) {
+            switch (type.toLowerCase()) {
+                case 'chocolate': return '#4e342e';
+                case 'fruta': return '#d81b60';
+                case 'crema': return '#ffd54f';
+                default: return '#5d4037';
+            }
+        }
+        
+        // Generar color aleatorio
+        function getRandomColor() {
+            const colors = ['#e0f7fa', '#d7ccc8', '#f8bbd0', '#fff9c4', '#d1c4e9', '#c8e6c9', '#ffccbc', '#e1bee7'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        // Ajustar color (clarear u oscurecer)
+        function adjustColor(hex, percent) {
+            // Implementación simplificada para el ejemplo
+            return hex;
+        }
+        
+        // ====================
+        // EVENT LISTENERS
+        // ====================
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar usuario actual si existe
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+            }
+            
+            // Renderizar contenido inicial
+            renderFlavors();
+            renderAdminFlavors();
+            updateAuthUI();
+            
+            // Scroll animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('appear');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Modal handling
+        loginBtn.addEventListener('click', () => {
+            if (!currentUser) {
+                loginModal.style.display = 'flex';
+            } else {
+                // Ya autenticado, podría mostrar menú de usuario
+            }
+        });
+        
+        registerBtn.addEventListener('click', () => {
+            if (!currentUser) {
+                registerModal.style.display = 'flex';
+            } else {
+                logout();
+            }
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'none';
+                adminLoginModal.style.display = 'none';
+            });
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) loginModal.style.display = 'none';
+            if (e.target === registerModal) registerModal.style.display = 'none';
+            if (e.target === adminLoginModal) adminLoginModal.style.display = 'none';
+        });
+        
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'flex';
+        });
+        
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+        
+        adminLoginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+            adminLoginModal.style.display = 'flex';
+        });
+        
+        backToUserLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            adminLoginModal.style.display = 'none';
+            loginModal.style.display = 'flex';
+        });
+        
+        // Login de usuario
+        document.getElementById('login-submit').addEventListener('click', () => {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            if (email && password) {
+                if (loginUser(email, password)) {
+                    loginModal.style.display = 'none';
+                    updateAuthUI();
+                    alert(`¡Bienvenido de nuevo, ${currentUser.name.split(' ')[0]}!`);
+                } else {
+                    alert('Credenciales incorrectas');
+                }
+            } else {
+                alert('Por favor completa todos los campos');
+            }
+        });
+        
+        // Registro de usuario
+        document.getElementById('register-submit').addEventListener('click', () => {
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+            
+            if (password !== confirm) {
+                alert('Las contraseñas no coinciden');
+                return;
+            }
+            
+            if (name && email && password) {
+                if (registerUser(name, email, password)) {
+                    registerModal.style.display = 'none';
+                    loginModal.style.display = 'flex';
+                }
+            } else {
+                alert('Por favor completa todos los campos');
+            }
+        });
+        
+        // Login de administrador
+        document.getElementById('admin-submit').addEventListener('click', () => {
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            if (loginUser(email, password) && currentUser.role === 'admin') {
+                adminLoginModal.style.display = 'none';
+                updateAuthUI();
+                adminPanel.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Credenciales de administrador incorrectas');
+            }
+        });
+        
+        // Logout de administrador
+        logoutAdminBtn.addEventListener('click', () => {
+            logout();
+        });
+        
+        // Guardar sabor (admin)
+        saveFlavorBtn.addEventListener('click', saveFlavor);
+    </script>
+</body>
+</html>
