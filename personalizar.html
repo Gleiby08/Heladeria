@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza tu Helado - Gelato Paradiso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="customize-page-container">
+        <div class="login-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-ice-cream logo-icon"></i>
+                <h1>Gelato Paradiso</h1>
+            </a>
+        </div>
+        
+        <div class="customize-content-wrapper">
+            <div class="customize-header">
+                <h3>Crea Tu Helado Perfecto</h3>
+            </div>
+            <div class="customize-body">
+                <div class="customize-steps-container">
+                    <div id="step-base" class="customize-step active">
+                        <h3>Paso 1: Elige tu Base</h3>
+                        <div class="options-container">
+                            <div class="option" data-value="cono" data-price="0.5">
+                                <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Cono clásico">
+                                <div class="option-info"><h4>Cono clásico</h4><p>0.50 €</p></div>
+                            </div>
+                            <div class="option" data-value="vaso" data-price="0.0">
+                                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Vaso">
+                                <div class="option-info"><h4>Vaso</h4><p>0.00 €</p></div>
+                            </div>
+                            <div class="option" data-value="cucurucho-chocolate" data-price="1.0">
+                                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cee6a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Cucurucho de chocolate">
+                                <div class="option-info"><h4>Cucurucho de chocolate</h4><p>1.00 €</p></div>
+                            </div>
+                            <div class="option" data-value="tarrina" data-price="0.0">
+                                <img src="https://images.unsplash.com/photo-1621841957884-1210fe19e66e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Tarrina">
+                                <div class="option-info"><h4>Tarrina</h4><p>0.00 €</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="step-flavors" class="customize-step">
+                        <h3>Paso 2: Selecciona hasta 3 Sabores</h3>
+                        <div class="flavors-container" id="customize-flavors-list"></div>
+                    </div>
+                    
+                    <div id="step-toppings" class="customize-step">
+                        <h3>Paso 3: Añade Toppings</h3>
+                        <div class="options-container">
+                            <div class="option" data-value="chocolate-caliente" data-price="0.5"><img src="https://images.unsplash.com/photo-1575380585121-352b56254677?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Chocolate caliente"><div class="option-info"><h4>Chocolate caliente</h4><p>0.50 €</p></div></div>
+                            <div class="option" data-value="fruta-fresca" data-price="0.7"><img src="https://images.unsplash.com/photo-1560717789-0ac7c58ac90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Fruta fresca"><div class="option-info"><h4>Fruta fresca</h4><p>0.70 €</p></div></div>
+                            <div class="option" data-value="galletas" data-price="0.6"><img src="https://images.unsplash.com/photo-1552590635-27c2c2128abf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Galletas"><div class="option-info"><h4>Galletas</h4><p>0.60 €</p></div></div>
+                            <div class="option" data-value="chocolate-chips" data-price="0.4"><img src="https://images.unsplash.com/photo-1611252871535-1bea18256b20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Chocolate chips"><div class="option-info"><h4>Chocolate chips</h4><p>0.40 €</p></div></div>
+                            <div class="option" data-value="caramelo" data-price="0.5"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Caramelo"><div class="option-info"><h4>Caramelo</h4><p>0.50 €</p></div></div>
+                            <div class="option" data-value="frutos-secos" data-price="0.8"><img src="https://images.unsplash.com/photo-1620916297395-90ae0966f3d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Frutos secos"><div class="option-info"><h4>Frutos secos</h4><p>0.80 €</p></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="customize-navigation">
+                    <button id="prev-step" class="btn btn-outline">Anterior</button>
+                    <div class="summary">
+                        <h4>Tu Helado:</h4>
+                        <div id="customize-summary"></div>
+                        <div id="customize-total">Total: 0.00 $</div>
+                    </div>
+                    <button id="next-step" class="btn btn-primary">Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-personalizar.js"></script>
+</body>
+</html>

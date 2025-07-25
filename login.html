@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Gelato Paradiso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            margin-bottom: -1px;
+        }
+        
+        .form-container {
+            display: none;
+        }
+        
+        .form-container.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-ice-cream logo-icon"></i>
+                <h1>Gelato Paradiso</h1>
+            </a>
+        </div>
+        
+        <div class="login-tabs">
+            <button class="tab-btn active" id="login-tab">Iniciar Sesión</button>
+            <button class="tab-btn" id="register-tab">Registrarse</button>
+        </div>
+        
+        <div class="login-content">
+            <!-- Formulario de Inicio de Sesión -->
+            <div id="login-form" class="form-container active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" placeholder="••••••••">
+                </div>
+                <button id="login-submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Acceder</button>
+                <div class="form-footer">
+                    <p>¿Olvidaste tu contraseña? <a href="#" id="forgot-password">Recuperar</a></p>
+                    <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                        <button id="admin-login-btn" class="btn btn-dark" style="width: 100%;">Acceso Administrador</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulario de Registro -->
+            <div id="register-form" class="form-container">
+                <div class="form-group">
+                    <label for="register-name">Nombre Completo</label>
+                    <input type="text" id="register-name" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="tu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar Contraseña</label>
+                    <input type="password" id="register-confirm" placeholder="••••••••">
+                </div>
+                <button id="register-submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Registrarse</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        ¿Ya tienes cuenta? <a href="#" id="switch-to-login">Inicia Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Acceso Administrador -->
+    <div id="admin-login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--dark);">
+                <h3>Acceso Administrador</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="admin-email">Email de Administrador</label>
+                    <input type="email" id="admin-email" placeholder="admin@heladeria.com">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Contraseña</label>
+                    <input type="password" id="admin-password" placeholder="••••••••">
+                </div>
+                <button id="admin-submit" class="btn btn-dark" style="width: 100%; padding: 12px;">Acceder al Panel</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        <a href="#" id="back-to-user-login">Volver a inicio de usuario</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-login.js"></script>
+</body>
+</html>

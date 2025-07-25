@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Gelato Paradiso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-panel">
+        <div class="admin-header">
+            <h2>Panel de Administración</h2>
+            <button id="logout-admin-btn" class="btn btn-outline">Cerrar Sesión</button>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Ventas Hoy</h3>
+                <div class="number">$1,245</div>
+                <p>+12% respecto a ayer</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pedidos</h3>
+                <div class="number">42</div>
+                <p>+5 nuevos hoy</p>
+            </div>
+            <div class="stat-card">
+                <h3>Clientes Nuevos</h3>
+                <div class="number">18</div>
+                <p>+8% esta semana</p>
+            </div>
+            <div class="stat-card">
+                <h3>Valoración</h3>
+                <div class="number">4.8/5</div>
+                <p>+32 reseñas este mes</p>
+            </div>
+        </div>
+        
+        <div class="admin-section">
+            <h3>Gestión de Sabores</h3>
+            <div class="flavor-form">
+                <div class="form-group form-full">
+                    <label for="flavor-name">Nombre del Sabor</label>
+                    <input type="text" id="flavor-name" placeholder="Ej: Vainilla Bourbon">
+                </div>
+                <div class="form-group">
+                    <label for="flavor-type">Tipo</label>
+                    <input type="text" id="flavor-type" placeholder="Ej: Crema">
+                </div>
+                <div class="form-group">
+                    <label for="flavor-price">Precio ($)</label>
+                    <input type="number" id="flavor-price" placeholder="Ej: 3.50" step="0.01">
+                </div>
+                <div class="form-group form-full">
+                    <label for="flavor-desc">Descripción</label>
+                    <input type="text" id="flavor-desc" placeholder="Ej: Vainilla de Madagascar con notas de caramelo">
+                </div>
+                <div class="form-group form-full">
+                    <label for="flavor-image">URL de la Imagen</label>
+                    <input type="text" id="flavor-image" placeholder="https://ejemplo.com/imagen.jpg">
+                </div>
+                <div class="form-group form-full">
+                    <label for="flavor-tags">Etiquetas (separadas por comas)</label>
+                    <input type="text" id="flavor-tags" placeholder="Ej: vegano, sin lactosa, fruta">
+                </div>
+                <div class="form-group form-full">
+                    <button id="save-flavor" class="btn btn-primary" style="width: 100%; padding: 12px;">Guardar Sabor</button>
+                </div>
+            </div>
+            
+            <div class="flavors-list" id="admin-flavors-list">
+                <!-- Admin flavors list will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script-admin.js"></script>
+</body>
+</html>
