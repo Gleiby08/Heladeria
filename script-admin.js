@@ -13,8 +13,8 @@ const initialFlavors = [
 ];
 
 let currentUser = null;
-// <<-- MODIFICA ESTA LÍNEA: Si no hay nada en localStorage, usa initialFlavors en lugar de un array vacío
-let flavors = JSON.parse(localStorage.getItem('flavors')) || initialFlavors;
+const storedFlavors = JSON.parse(localStorage.getItem('flavors'));
+let flavors = (storedFlavors && storedFlavors.length > 0) ? storedFlavors : initialFlavors;
 let currentEditFlavorId = null;
 
 // ====================

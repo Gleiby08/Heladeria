@@ -11,7 +11,8 @@ const initialFlavors = [
     { id: 6, name: "Matcha Premium", description: "Té matcha japonés con leche de almendras", price: 4.50, tags: ["Vegano", "Sin lactosa"], type: "crema", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" }
 ];
 
-let flavors = JSON.parse(localStorage.getItem('flavors')) || initialFlavors;
+const storedFlavors = JSON.parse(localStorage.getItem('flavors'));
+let flavors = (storedFlavors && storedFlavors.length > 0) ? storedFlavors : initialFlavors;
 
 // ====================
 // DOM ELEMENTS

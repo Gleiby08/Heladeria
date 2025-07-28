@@ -71,7 +71,8 @@ const adminUsers = [{ id: 100, name: "Administrador", email: "admin@heladeria.co
 // ESTADO DE LA APLICACIÓN
 // ====================
 let currentUser = null;
-let flavors = JSON.parse(localStorage.getItem('flavors')) || initialFlavors;
+const storedFlavors = JSON.parse(localStorage.getItem('flavors'));
+let flavors = (storedFlavors && storedFlavors.length > 0) ? storedFlavors : initialFlavors;
 let users = JSON.parse(localStorage.getItem('users')) || [...initialUsers, ...adminUsers];
 
 // ====================
