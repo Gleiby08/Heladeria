@@ -23,6 +23,8 @@ let currentEditFlavorId = null;
 const logoutAdminBtn = document.getElementById('logout-admin-btn');
 const adminFlavorsList = document.getElementById('admin-flavors-list');
 const saveFlavorBtn = document.getElementById('save-flavor');
+const flavorImageInput = document.getElementById('flavor-image');
+const imagePreview = document.getElementById('image-preview');
 
 // ====================
 // FUNCIONES
@@ -151,6 +153,10 @@ function saveFlavor() {
     document.getElementById('flavor-desc').value = '';
     document.getElementById('flavor-tags').value = '';
     document.getElementById('flavor-image').value = '';
+
+    // Limpiar previsualización
+    imagePreview.src = '';
+    imagePreview.style.display = 'none';
     
     alert('Sabor guardado exitosamente');
 }
@@ -165,6 +171,14 @@ function editFlavor(id) {
         document.getElementById('flavor-desc').value = flavor.description;
         document.getElementById('flavor-tags').value = flavor.tags.join(', ');
         document.getElementById('flavor-image').value = flavor.image || '';
+
+        // Mostrar previsualización de la imagen existente
+        if (flavor.image) {
+            imagePreview.src = flavor.image;
+            imagePreview.style.display = 'block';
+        } else {
+            imagePreview.style.display = 'none';
+        }
         
         currentEditFlavorId = id;
         
@@ -206,4 +220,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event Listeners
     logoutAdminBtn.addEventListener('click', logout);
     saveFlavorBtn.addEventListener('click', saveFlavor);
+
+    // Event listener para la previsualización de la imagen
+    flavorImageInput.addEventListener('input', () => {
+        const url = flavorImageInput.value;
+        if (url) {
+            imagePreview.src = url;
+            imagePreview.style.display = 'block';
+        } else {
+            imagePreview.style.display = 'none';
+        }
+    });
 });
