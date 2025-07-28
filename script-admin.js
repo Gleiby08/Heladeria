@@ -1,8 +1,20 @@
-// ====================
+
 // DATOS Y ESTADO
 // ====================
+
+// <<-- AÑADE ESTO: La lista inicial de sabores para tener una base
+const initialFlavors = [
+    { id: 1, name: "Vainilla Bourbon", description: "Vainilla de Madagascar con notas de caramelo", price: 3.50, tags: ["Clásico", "Premium"], type: "crema", image: "images/vainilla.jpg" },
+    { id: 2, name: "Chocolate Negro 70%", description: "Intenso chocolate amargo con cacao de Ecuador", price: 4.00, tags: ["Chocolate", "Sin azúcar"], type: "chocolate", image: "images/chocolate.jpg" },
+    { id: 3, name: "Frambuesa Silvestre", description: "Frambuesas orgánicas con un toque de limón", price: 3.75, tags: ["Frutos Rojos", "Vegano"], type: "fruta", image: "images/frambuesa.jpg" },
+    { id: 4, name: "Limón de Sorrento", description: "Limones italianos con ralladura natural", price: 3.25, tags: ["Cítrico", "Vegano"], type: "fruta", image: "images/limon.jpg" },
+    { id: 5, name: "Lavanda y Miel", description: "Delicada flor de lavanda con miel local", price: 4.25, tags: ["Exótico", "Edición Limitada"], type: "crema", image: "images/lavanda.jpg" },
+    { id: 6, name: "Matcha Premium", description: "Té matcha japonés con leche de almendras", price: 4.50, tags: ["Vegano", "Sin lactosa"], type: "crema", image: "images/matcha.jpg" }
+];
+
 let currentUser = null;
-let flavors = JSON.parse(localStorage.getItem('flavors')) || [];
+// <<-- MODIFICA ESTA LÍNEA: Si no hay nada en localStorage, usa initialFlavors en lugar de un array vacío
+let flavors = JSON.parse(localStorage.getItem('flavors')) || initialFlavors;
 let currentEditFlavorId = null;
 
 // ====================
@@ -89,6 +101,7 @@ function saveFlavor() {
     const price = parseFloat(document.getElementById('flavor-price').value);
     const desc = document.getElementById('flavor-desc').value;
     const tags = document.getElementById('flavor-tags').value.split(',').map(tag => tag.trim());
+    const image = document.getElementById('flavor-image').value;
     
     if (!name || !type || isNaN(price) || !desc) {
         alert('Por favor completa todos los campos requeridos');
@@ -105,7 +118,8 @@ function saveFlavor() {
                 type,
                 price,
                 description: desc,
-                tags
+                tags,
+                image: image || flavors[index].image // Actualiza la imagen, o mantiene la anterior si no se provee una nueva
             };
         }
         currentEditFlavorId = null;
@@ -119,7 +133,7 @@ function saveFlavor() {
             description: desc,
             tags,
             color: getRandomColor(),
-            image: "https://via.placeholder.com/300x200?text=Helado" // Imagen por defecto
+            image: image || "https://via.placeholder.com/300x200?text=Helado" // Usa la imagen del input o una por defecto
         };
         flavors.push(newFlavor);
     }
@@ -136,6 +150,7 @@ function saveFlavor() {
     document.getElementById('flavor-price').value = '';
     document.getElementById('flavor-desc').value = '';
     document.getElementById('flavor-tags').value = '';
+    document.getElementById('flavor-image').value = '';
     
     alert('Sabor guardado exitosamente');
 }
@@ -149,6 +164,7 @@ function editFlavor(id) {
         document.getElementById('flavor-price').value = flavor.price;
         document.getElementById('flavor-desc').value = flavor.description;
         document.getElementById('flavor-tags').value = flavor.tags.join(', ');
+        document.getElementById('flavor-image').value = flavor.image || '';
         
         currentEditFlavorId = id;
         
