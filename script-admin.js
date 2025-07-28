@@ -4,12 +4,12 @@
 
 // <<-- AÑADE ESTO: La lista inicial de sabores para tener una base
 const initialFlavors = [
-    { id: 1, name: "Vainilla Bourbon", description: "Vainilla de Madagascar con notas de caramelo", price: 3.50, tags: ["Clásico", "Premium"], type: "crema", image: "images/vainilla.jpg" },
-    { id: 2, name: "Chocolate Negro 70%", description: "Intenso chocolate amargo con cacao de Ecuador", price: 4.00, tags: ["Chocolate", "Sin azúcar"], type: "chocolate", image: "images/chocolate.jpg" },
-    { id: 3, name: "Frambuesa Silvestre", description: "Frambuesas orgánicas con un toque de limón", price: 3.75, tags: ["Frutos Rojos", "Vegano"], type: "fruta", image: "images/frambuesa.jpg" },
-    { id: 4, name: "Limón de Sorrento", description: "Limones italianos con ralladura natural", price: 3.25, tags: ["Cítrico", "Vegano"], type: "fruta", image: "images/limon.jpg" },
-    { id: 5, name: "Lavanda y Miel", description: "Delicada flor de lavanda con miel local", price: 4.25, tags: ["Exótico", "Edición Limitada"], type: "crema", image: "images/lavanda.jpg" },
-    { id: 6, name: "Matcha Premium", description: "Té matcha japonés con leche de almendras", price: 4.50, tags: ["Vegano", "Sin lactosa"], type: "crema", image: "images/matcha.jpg" }
+    { id: 1, name: "Vainilla Bourbon", description: "Vainilla de Madagascar con notas de caramelo", price: 3.50, tags: ["Clásico", "Premium"], type: "crema", image: "https://images.unsplash.com/photo-1576613109753-27804de1c280?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" },
+    { id: 2, name: "Chocolate Negro 70%", description: "Intenso chocolate amargo con cacao de Ecuador", price: 4.00, tags: ["Chocolate", "Sin azúcar"], type: "chocolate", image: "https://images.unsplash.com/photo-1600326145557-02c826d2d457?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" },
+    { id: 3, name: "Frambuesa Silvestre", description: "Frambuesas orgánicas con un toque de limón", price: 3.75, tags: ["Frutos Rojos", "Vegano"], type: "fruta", image: "https://images.unsplash.com/photo-1567253968596-a34a13590a21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" },
+    { id: 4, name: "Limón de Sorrento", description: "Limones italianos con ralladura natural", price: 3.25, tags: ["Cítrico", "Vegano"], type: "fruta", image: "https://images.unsplash.com/photo-1626201416998-56379b37e0ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" },
+    { id: 5, name: "Lavanda y Miel", description: "Delicada flor de lavanda con miel local", price: 4.25, tags: ["Exótico", "Edición Limitada"], type: "crema", image: "https://images.unsplash.com/photo-1599028030594-9d7658035105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" },
+    { id: 6, name: "Matcha Premium", description: "Té matcha japonés con leche de almendras", price: 4.50, tags: ["Vegano", "Sin lactosa"], type: "crema", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" }
 ];
 
 let currentUser = null;

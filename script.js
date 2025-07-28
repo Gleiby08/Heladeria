@@ -10,7 +10,7 @@ const initialFlavors = [
         tags: ["Clásico", "Premium"],
         type: "crema",
         color: "#e0f7fa",
-        image: "images/vainilla.jpg" 
+        image: "https://images.unsplash.com/photo-1576613109753-27804de1c280?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const initialFlavors = [
         tags: ["Chocolate", "Sin azúcar añadido"],
         type: "chocolate",
         color: "#d7ccc8",
-        image: "images/chocolate.jpg" // RUTA LOCAL
+        image: "https://images.unsplash.com/photo-1600326145557-02c826d2d457?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const initialFlavors = [
         tags: ["Frutos Rojos", "Vegano"],
         type: "fruta",
         color: "#f8bbd0",
-        image: "images/frambuesa.jpg" // RUTA LOCAL
+        image: "https://images.unsplash.com/photo-1567253968596-a34a13590a21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     },
     {
         id: 4,
@@ -40,7 +40,7 @@ const initialFlavors = [
         tags: ["Cítrico", "Vegano"],
         type: "fruta",
         color: "#fff9c4",
-        image: "images/limon.jpg" // RUTA LOCAL
+        image: "https://images.unsplash.com/photo-1626201416998-56379b37e0ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     },
     {
         id: 5,
@@ -50,7 +50,7 @@ const initialFlavors = [
         tags: ["Exótico", "Edición Limitada"],
         type: "crema",
         color: "#d1c4e9",
-        image: "images/lavanda.jpg" // RUTA LOCAL
+        image: "https://images.unsplash.com/photo-1599028030594-9d7658035105?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     },
     {
         id: 6,
@@ -60,7 +60,7 @@ const initialFlavors = [
         tags: ["Vegano", "Sin lactosa"],
         type: "crema",
         color: "#c8e6c9",
-        image: "images/matcha.jpg" // RUTA LOCAL
+        image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     }
 
 ];
